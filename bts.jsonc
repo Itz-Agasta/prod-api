@@ -1,0 +1,22 @@
+// Better-T-Stack configuration file
+// safe to delete
+
+{
+  "$schema": "https://better-t-stack.dev/schema.json",
+  "version": "2.29.0",
+  "createdAt": "2025-08-02T06:43:24.736Z",
+  "database": "mongodb",
+  "orm": "mongoose",
+  "backend": "express",
+  "runtime": "bun",
+  "frontend": [],
+  "addons": [
+    "ultracite"
+  ],
+  "examples": [],
+  "auth": false,
+  "packageManager": "bun",
+  "dbSetup": "mongodb-atlas",
+  "api": "none",
+  "webDeploy": "none"
+}
