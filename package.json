@@ -14,7 +14,12 @@
     "dev:web": "bun run --filter web dev",
     "dev:server": "bun run --filter server dev"
   },
-  "dependencies": {},
+  "dependencies": {
+    "compression": "^1.8.1",
+    "cookie-parser": "^1.4.7",
+    "express-rate-limit": "^8.0.1",
+    "helmet": "^8.1.0"
+  },
   "devDependencies": {
     "@biomejs/biome": "2.1.2",
     "ultracite": "5.1.1"
