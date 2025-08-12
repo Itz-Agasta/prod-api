@@ -39,7 +39,7 @@ app.use(limiter);
     app.use('/api/v1', v1Routes);
     const port = config.PORT;
     app.listen(port, () => {
-      logger.info(`Server is running on port ${port}`);
+      logger.info(`Server is running on port: ${port}`);
     });
   } catch (err) {
     logger.error('Error during server setup:', err);
