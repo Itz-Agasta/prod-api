@@ -2,6 +2,7 @@ import { ServerApiVersion } from 'mongodb';
 import type { ConnectOptions } from 'mongoose';
 import mongoose from 'mongoose';
 import config from '@/config';
+import { logger } from './winston';
 
 const clientOptions: ConnectOptions = {
   dbName: 'prod-db',
@@ -21,7 +22,7 @@ export const connectToDb = async (): Promise<void> => {
   try {
     await mongoose.connect(config.DATABASE_URL, clientOptions);
 
-    console.log('Connection to the db successful', {
+    logger.info('Connection to the db successful', {
       uri: config.DATABASE_URL,
       Options: clientOptions,
     });
@@ -29,7 +30,7 @@ export const connectToDb = async (): Promise<void> => {
     if (err instanceof Error) {
       throw err;
     }
-    console.log('Error connecting to the db');
+    logger.error('Error connecting to the db');
   }
 };
 
@@ -37,7 +38,7 @@ export const disconnectFromDb = async (): Promise<void> => {
   try {
     await mongoose.disconnect();
 
-    console.log('Disconnect from the db', {
+    logger.warn('Disconnect from the db', {
       uri: config.DATABASE_URL,
       Options: clientOptions,
     });
@@ -45,6 +46,6 @@ export const disconnectFromDb = async (): Promise<void> => {
     if (err instanceof Error) {
       throw new Error(err.message);
     }
-    console.log('Disconnect from the db', err);
+    logger.error('Disconnect from the db', err);
   }
 };

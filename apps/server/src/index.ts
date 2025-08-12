@@ -8,6 +8,7 @@ import v1Routes from '@/routers/v1';
 import config from './config';
 import { connectToDb, disconnectFromDb } from './lib/mongoose';
 import limiter from './lib/rate-limit';
+import { logger } from './lib/winston';
 
 const app = express();
 
@@ -38,12 +39,10 @@ app.use(limiter);
     app.use('/api/v1', v1Routes);
     const port = config.PORT;
     app.listen(port, () => {
-      // biome-ignore lint/suspicious/noConsole: false positive, logging server start
-      console.log(`Server is running on port ${port}`);
+      logger.info(`Server is running on port ${port}`);
     });
   } catch (err) {
-    // biome-ignore lint/suspicious/noConsole: false positive, logging server start
-    console.error('Error during server setup:', err);
+    logger.error('Error during server setup:', err);
   }
 
   if (process.env.NODE_ENV === 'production') {
@@ -55,12 +54,10 @@ app.use(limiter);
 const handleServerShutdown = async () => {
   try {
     await disconnectFromDb();
-    // biome-ignore lint/suspicious/noConsole: false positive, logging server start
-    console.log('Server SHUTDOWN');
+    logger.info('Server SHUTDOWN');
     process.exit(0);
   } catch (err) {
-    // biome-ignore lint/suspicious/noConsole: false positive, logging server start
-    console.log('Error during server shutdown', err);
+    logger.error('Error during server shutdown', err);
   }
 };
 
