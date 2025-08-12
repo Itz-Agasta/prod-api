@@ -1,9 +1,10 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+import { logger } from '@/lib/winston';
 
-await mongoose.connect(process.env.DATABASE_URL || "").catch((error) => {
-  console.log("Error connecting to database:", error);
+await mongoose.connect(process.env.DATABASE_URL || '').catch((error) => {
+  logger.error('Error connecting to database:', error);
 });
 
-const client = mongoose.connection.getClient().db("myDB");
+const client = mongoose.connection.getClient().db('myDB');
 
 export { client };
