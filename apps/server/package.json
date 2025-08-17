@@ -10,11 +10,17 @@
     "start": "bun run dist/index.js"
   },
   "dependencies": {
-    "dotenv": "^17.2.1",
-    "zod": "^4.0.2",
-    "express": "^5.1.0",
+    "compression": "^1.8.1",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
-    "mongoose": "^8.14.0"
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.0.1",
+    "helmet": "^8.1.0",
+    "mongodb": "^6.18.0",
+    "mongoose": "^8.14.0",
+    "winston": "^3.17.0",
+    "zod": "^4.0.2"
   },
   "devDependencies": {
     "tsdown": "^0.12.9",
